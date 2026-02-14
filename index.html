@@ -1,735 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAPTRANG 2025 - SNJB KBJ College Fest</title>
-    <link rel="icon" type="image/png" href="Saptrang.jpg">
-    <meta name="title" content="Saptrang 2025 - SNJB KBJ College of Engineering">
-    <meta name="description" content="Join the most electrifying college fest - Saptrang 2025! Seven days of colors, culture, competitions, and celebrations!">
-    <meta name="keywords" content="Saptrang 2025, SNJB, College Fest, Cultural Events, Competitions">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Bebas+Neue&family=Righteous&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SAPTRANG 2025 — SNJB KBJ College Fest</title>
+<link rel="icon" type="image/png" href="Saptrang.jpg"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f0f0f0}
+::-webkit-scrollbar-thumb{background:#d946ef;border-radius:6px}
 
-        body {
-            font-family: 'Fredoka', sans-serif;
-            overflow-x: hidden;
-            background: #0a0a0a;
-            color: #fff;
-        }
+:root{
+  --white:  #ffffff;
+  --bg:     #f7f7f9;
+  --ink:    #111118;
+  --ink-2:  #44445a;
+  --ink-3:  #888899;
+  --line:   #e4e4ed;
 
-        /* Rainbow Background Animation */
-        .rainbow-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(45deg, 
-                #ff0000 0%, 
-                #ff7f00 14.28%, 
-                #ffff00 28.56%, 
-                #00ff00 42.84%, 
-                #0000ff 57.12%, 
-                #4b0082 71.4%, 
-                #9400d3 85.68%, 
-                #ff0000 100%);
-            background-size: 400% 400%;
-            animation: rainbowShift 15s ease infinite;
-            opacity: 0.15;
-        }
+  /* card palette — each event gets one */
+  --c1: #f43f5e; /* rose      - Cultural    */
+  --c2: #f97316; /* orange    - Anchor      */
+  --c3: #eab308; /* amber     - Art         */
+  --c4: #22c55e; /* green     - Theme Days  */
+  --c5: #3b82f6; /* blue      - Fishpond    */
 
-        @keyframes rainbowShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+  --c1-soft: #fff1f3;
+  --c2-soft: #fff7ed;
+  --c3-soft: #fefce8;
+  --c4-soft: #f0fdf4;
+  --c5-soft: #eff6ff;
+}
 
-        /* Floating Confetti */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ff0;
-            position: absolute;
-            animation: confettiFall 8s linear infinite;
-        }
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
 
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
+/* ── LOADER ── */
+#loader{
+  position:fixed;inset:0;background:var(--white);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  z-index:9999;transition:opacity .6s ease,visibility .6s ease;
+}
+#loader.gone{opacity:0;visibility:hidden;pointer-events:none}
+body.loading{overflow:hidden}
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
+.ld-word{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(5rem,16vw,11rem);
+  letter-spacing:.08em;
+  color:var(--ink);
+  position:relative;
+}
+.ld-word::after{
+  content:'SAPTRANG';
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  clip-path:inset(0 100% 0 0);
+  animation:wipe 1.3s ease-out forwards .1s;
+}
+@keyframes wipe{to{clip-path:inset(0 0% 0 0)}}
 
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.4);
-        }
+.ld-track{width:200px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.ld-prog{height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c5));animation:prog 1.35s ease-out forwards}
+@keyframes prog{to{width:100%}}
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-        }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:500;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:0 40px;height:66px;
+  transition:background .3s,box-shadow .3s;
+}
+nav.stuck{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line)}
+.nav-links-left,.nav-links-right{
+  display:flex;gap:28px;list-style:none;align-items:center;
+}
+.nav-links-right{justify-content:flex-end}
+.nav-links-left a,.nav-links-right a{
+  font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-3);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links-left a:hover,.nav-links-right a:hover{color:var(--ink)}
+.nav-center{
+  font-family:'Bebas Neue',cursive;
+  font-size:2rem;letter-spacing:.1em;
+  color:var(--ink);text-align:center;
+  text-decoration:none;
+}
+@media(max-width:700px){
+  nav{grid-template-columns:1fr;justify-items:center;height:56px;padding:0 18px}
+  .nav-links-left,.nav-links-right{display:none}
+  .nav-center{font-size:1.7rem}
+}
 
-        .logo-title {
-            font-family: 'Bebas Neue', cursive;
-            font-size: clamp(4rem, 15vw, 12rem);
-            font-weight: 700;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, 
-                #ff0000, #ff7f00, #ffff00, #00ff00, 
-                #0000ff, #4b0082, #9400d3);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: rainbowText 3s linear infinite;
-            text-shadow: 0 0 80px rgba(255,255,255,0.5);
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.8));
-        }
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:110px 24px 80px;
+  background:var(--white);
+  position:relative;overflow:hidden;
+}
+/* rainbow stripe at bottom of hero */
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;width:100%;height:5px;
+  background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5));
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--bg);border:1.5px solid var(--line);
+  padding:7px 20px;border-radius:100px;
+  font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--ink-2);margin-bottom:32px;
+}
+.hero-badge b{color:var(--c1)}
+.hero-title{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(6rem,22vw,16rem);
+  line-height:.88;letter-spacing:.04em;
+  color:var(--ink);
+  margin-bottom:24px;
+}
+/* Coloured letters */
+.hero-title span:nth-child(1){color:var(--c1)}
+.hero-title span:nth-child(2){color:var(--c2)}
+.hero-title span:nth-child(3){color:var(--c3)}
+.hero-title span:nth-child(4){color:var(--c4)}
+.hero-title span:nth-child(5){color:var(--ink)}
+.hero-title span:nth-child(6){color:var(--c5)}
+.hero-title span:nth-child(7){color:var(--c1)}
+.hero-title span:nth-child(8){color:var(--c2)}
 
-        @keyframes rainbowText {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
+.hero-sub{
+  font-size:clamp(1rem,2.5vw,1.35rem);font-weight:400;
+  color:var(--ink-2);max-width:520px;line-height:1.65;
+  margin-bottom:36px;
+}
+.hero-sub strong{color:var(--ink);font-weight:700}
+.hero-date-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--bg);border:1.5px solid var(--line);
+  padding:12px 28px;border-radius:100px;
+  font-size:.92rem;font-weight:600;color:var(--ink-2);
+  margin-bottom:44px;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--ink);color:var(--white);
+  padding:15px 38px;border-radius:100px;
+  font-weight:700;font-size:.88rem;
+  text-transform:uppercase;letter-spacing:.1em;
+  text-decoration:none;
+  transition:background .25s,transform .25s;
+  box-shadow:0 4px 24px rgba(17,17,24,.15);
+}
+.hero-cta:hover{background:#2b2b3a;transform:translateY(-2px)}
+.hero-arrow{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  color:var(--ink-3);font-size:1.4rem;animation:drop 2s ease-in-out infinite;
+}
+@keyframes drop{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(12px)}}
 
-        .tagline {
-            font-family: 'Righteous', cursive;
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8),
-                         0 0 40px rgba(255,100,255,0.6);
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-        }
+/* ── SECTIONS ── */
+.sec{padding:90px 24px;position:relative}
+.sec.alt{background:var(--white)}
+.lbl{display:block;text-align:center;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.2em;color:var(--c1);margin-bottom:8px}
+.sec-h{font-family:'Bebas Neue',cursive;font-size:clamp(2.5rem,5.5vw,4rem);letter-spacing:.05em;text-align:center;margin-bottom:10px;color:var(--ink)}
+.sec-p{text-align:center;color:var(--ink-2);font-size:.97rem;max-width:480px;margin:0 auto 52px;line-height:1.7}
+.rule{max-width:1200px;margin:0 auto;height:1px;background:var(--line)}
 
-        .date-banner {
-            display: inline-block;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 15px 40px;
-            border-radius: 50px;
-            border: 3px solid rgba(31, 31, 31, 0.3);
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 600;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
+/* ── STATS ── */
+.stats-row{
+  display:flex;flex-wrap:wrap;
+  max-width:800px;margin:0 auto 80px;
+  border:1.5px solid var(--line);border-radius:16px;
+  background:var(--white);overflow:hidden;
+}
+.stat{flex:1;min-width:120px;text-align:center;padding:26px 16px;border-right:1.5px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Bebas Neue',cursive;font-size:2.8rem;line-height:1;color:var(--ink)}
+.stat-l{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);margin-top:4px}
+.stat:nth-child(1) .stat-n{color:var(--c1)}
+.stat:nth-child(2) .stat-n{color:var(--c2)}
+.stat:nth-child(3) .stat-n{color:var(--c4)}
+.stat:nth-child(4) .stat-n{color:var(--c5)}
+@media(max-width:560px){.stat{border-right:none;border-bottom:1.5px solid var(--line)}.stat:last-child{border-bottom:none}}
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
+/* ── POSTER ── */
+.poster-shell{
+  max-width:500px;margin:0 auto;
+  border-radius:20px;overflow:hidden;
+  border:1.5px solid var(--line);
+  box-shadow:0 20px 60px rgba(0,0,0,.1);
+  transition:transform .35s,box-shadow .35s;
+}
+.poster-shell:hover{transform:translateY(-4px);box-shadow:0 32px 80px rgba(0,0,0,.14)}
+.poster-shell img{width:100%;display:block}
 
-        .scroll-indicator::before {
-            content: '↓';
-            font-size: 3rem;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8);
-        }
+/* ── SCHEDULE ── */
+.sched-shell{
+  max-width:860px;margin:0 auto;
+  border-radius:16px;overflow:hidden;
+  border:1.5px solid var(--line);
+  box-shadow:0 16px 48px rgba(0,0,0,.08);
+}
+.sched-shell img{width:100%;display:block}
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(20px); }
-        }
+/* ════════════════════════════════
+   EVENT CARDS
+════════════════════════════════ */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:1140px;
+  margin:0 auto;
+}
+/* Last card (Fishpond) spans full row */
+.cards-grid .card:last-child{grid-column:1/-1}
 
-        /* Section Styles */
-        section {
-            padding: 80px 20px;
-            position: relative;
-        }
+@media(max-width:900px){.cards-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cards-grid{grid-template-columns:1fr}.cards-grid .card:last-child{grid-column:1}}
 
-        .section-title {
-            font-family: 'Righteous', cursive;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            text-align: center;
-            margin-bottom: 60px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
+/* BASE CARD */
+.card{
+  background:var(--white);
+  border:1.5px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .3s cubic-bezier(.22,.68,0,1.3), box-shadow .3s ease, border-color .3s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 48px var(--c-shadow, rgba(0,0,0,.1));
+  border-color:var(--c-main);
+}
 
-        /* Poster Section */
-        .poster-container {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
+/* Colored top bar */
+.card-bar{height:5px;background:var(--c-main);flex-shrink:0}
 
-        .poster-container img {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(255,0,255,0.4),
-                        0 0 100px rgba(0,255,255,0.3);
-            /* transition: transform 0.5s ease; */
-        }
+/* Card content */
+.card-body{padding:28px 28px 32px;flex:1;display:flex;flex-direction:column}
 
+/* Icon chip */
+.chip{
+  width:48px;height:48px;border-radius:14px;
+  background:var(--c-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:18px;flex-shrink:0;
+}
 
-        /* Schedule Section */
-        .schedule-box {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-            border: 2px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
+/* Date tag */
+.ctag{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--c-main);
+  background:var(--c-soft);
+  padding:4px 12px;border-radius:100px;
+  margin-bottom:10px;align-self:flex-start;
+}
 
-        .schedule-box img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
+.card-title{
+  font-family:'Bebas Neue',cursive;
+  font-size:1.85rem;letter-spacing:.04em;
+  color:var(--ink);line-height:1.05;margin-bottom:10px;
+}
+.card-desc{
+  font-size:.87rem;line-height:1.75;
+  color:var(--ink-2);margin-bottom:20px;flex-grow:1;
+}
 
-        /* Events Grid */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+/* List */
+.clist{list-style:none;margin-bottom:24px}
+.clist li{
+  font-size:.83rem;font-weight:500;
+  padding:8px 12px 8px 16px;margin:4px 0;
+  border-radius:9px;
+  position:relative;
+  color:var(--ink-2);
+  background:var(--bg);
+  border-left:3px solid var(--c-main);
+  transition:background .2s,color .2s,transform .2s;
+  cursor:default;
+}
+.clist li:hover{background:var(--c-soft);color:var(--ink);transform:translateX(4px)}
 
-        .event-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 35px;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
+/* Alert */
+.calert{
+  display:flex;align-items:flex-start;gap:9px;
+  background:#fefce8;border:1.5px solid #fde68a;
+  border-radius:11px;padding:11px 14px;
+  font-size:.79rem;font-weight:500;color:#92400e;line-height:1.55;
+  margin-bottom:22px;
+}
 
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, 
-                #ff0000, #ff7f00, #ffff00, #00ff00, 
-                #0000ff, #4b0082, #9400d3, #ff0000);
-            background-size: 400% 400%;
-            border-radius: 25px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            animation: rainbowBorder 3s linear infinite;
-        }
+/* Button */
+.cbtn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;border-radius:100px;
+  font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;
+  text-decoration:none;
+  background:var(--c-main);color:var(--white);
+  box-shadow:0 4px 18px var(--c-shadow);
+  transition:transform .2s,filter .2s,box-shadow .2s;
+  align-self:flex-start;
+}
+.cbtn:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 8px 28px var(--c-shadow)}
+.cbtn svg{transition:transform .2s}
+.cbtn:hover svg{transform:translateX(4px)}
 
-        .event-card:hover::before {
-            opacity: 1;
-        }
+/* Per-card color tokens */
+.ev1{--c-main:var(--c1);--c-soft:var(--c1-soft);--c-shadow:rgba(244,63,94,.22)}
+.ev2{--c-main:var(--c2);--c-soft:var(--c2-soft);--c-shadow:rgba(249,115,22,.22)}
+.ev3{--c-main:var(--c3);--c-soft:var(--c3-soft);--c-shadow:rgba(234,179,8,.2)}
+.ev4{--c-main:var(--c4);--c-soft:var(--c4-soft);--c-shadow:rgba(34,197,94,.2)}
+.ev5{--c-main:var(--c5);--c-soft:var(--c5-soft);--c-shadow:rgba(59,130,246,.22)}
 
-        .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(255,0,255,0.4);
-        }
+/* Fishpond card (full width) — horizontal layout */
+.card-wide{flex-direction:row!important;align-items:stretch}
+.card-wide .card-bar{width:5px;height:auto;flex-shrink:0}
+.card-wide .card-body{flex-direction:row;gap:40px;align-items:flex-start;flex-wrap:wrap}
+.card-wide .card-left{flex:1;min-width:220px}
+.card-wide .card-right{flex:1;min-width:220px}
+@media(max-width:600px){
+  .card-wide{flex-direction:column!important}
+  .card-wide .card-bar{width:100%;height:5px}
+  .card-wide .card-body{flex-direction:column;gap:0}
+}
 
-        .event-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: inline-block;
-            filter: drop-shadow(0 0 10px currentColor);
-        }
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:rgba(255,255,255,.7);
+  text-align:center;padding:60px 24px 36px;
+}
+.f-brand{
+  font-family:'Bebas Neue',cursive;font-size:3rem;
+  letter-spacing:.1em;color:var(--white);margin-bottom:8px;
+}
+footer p{font-size:.9rem;line-height:1.85}
+footer strong{color:var(--white)}
+.f-stripe{
+  width:60px;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,var(--c1),var(--c5));
+  margin:18px auto 24px;
+}
+.f-tagline{font-size:1rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:32px}
+.socials{display:flex;justify-content:center;gap:12px;margin-bottom:40px}
+.soc{
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.5);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:1rem;
+  transition:background .2s,border-color .2s,color .2s,transform .2s;
+}
+.soc:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4);color:#fff;transform:translateY(-3px)}
+.f-copy{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;font-size:.75rem;color:rgba(255,255,255,.25)}
 
-        .event-title {
-            font-family: 'Righteous', cursive;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}
 
-        .event-desc {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 20px;
-        }
-
-        .event-list {
-            list-style: none;
-            margin: 20px 0;
-            padding: 0;
-        }
-
-        .event-list li {
-            padding: 12px;
-            margin: 8px 0;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            border-left: 4px solid;
-            transition: all 0.3s ease;
-        }
-
-        .event-list li:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateX(10px);
-        }
-
-        .event-date {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
-            color: #000;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        /* Button Styles */
-        .register-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
-            color: #000;
-            padding: 18px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(255,0,255,0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .register-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            transition: left 0.4s ease;
-        }
-
-        .register-btn:hover::before {
-            left: 0;
-        }
-
-        .register-btn span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .register-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,255,255,0.5);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0,0,0,0.9);
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 80px;
-            border-top: 2px solid rgba(255,255,255,0.1);
-        }
-
-        footer h3 {
-            font-family: 'Righteous', cursive;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        footer p {
-            color: rgba(255,255,255,0.6);
-            margin: 10px 0;
-        }
-
-        .social-links {
-            margin-top: 30px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            margin: 0 10px;
-            line-height: 50px;
-            color: #fff;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        /* Alert/Info Box */
-        .info-box {
-            background: rgba(255,200,0,0.2);
-            border: 2px solid rgba(255,200,0,0.5);
-            border-radius: 15px;
-            padding: 15px 20px;
-            margin: 15px 0;
-            color: #ffeb3b;
-            font-weight: 600;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .events-grid {
-                grid-template-columns: 1fr;
-                padding: 0 15px;
-            }
-
-            .event-card {
-                padding: 25px;
-            }
-
-            section {
-                padding: 60px 15px;
-            }
-
-            .logo-title {
-                letter-spacing: 4px;
-            }
-
-            .tagline {
-                letter-spacing: 1px;
-            }
-
-            .hero {
-                height: 80vh;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .date-banner {
-                padding: 12px 25px;
-            }
-
-            .register-btn {
-                padding: 15px 35px;
-                font-size: 1rem;
-            }
-
-            .event-title {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Color variations for cards */
-        .event-card:nth-child(1) .event-icon { color: #ff0000; }
-        .event-card:nth-child(2) .event-icon { color: #ff7f00; }
-        .event-card:nth-child(3) .event-icon { color: #ffff00; }
-        .event-card:nth-child(4) .event-icon { color: #00ff00; }
-        .event-card:nth-child(5) .event-icon { color: #0000ff; }
-        .event-card:nth-child(6) .event-icon { color: #9400d3; }
-
-        .event-card:nth-child(1) .event-list li { border-left-color: #ff0000; }
-        .event-card:nth-child(2) .event-list li { border-left-color: #ff7f00; }
-        .event-card:nth-child(3) .event-list li { border-left-color: #ffff00; }
-        .event-card:nth-child(4) .event-list li { border-left-color: #00ff00; }
-        .event-card:nth-child(5) .event-list li { border-left-color: #0000ff; }
-        .event-card:nth-child(6) .event-list li { border-left-color: #9400d3; }
-
-        /* Loading Animation */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-logo {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 5rem;
-            background: linear-gradient(90deg, 
-                #ff0000, #ff7f00, #ffff00, #00ff00, 
-                #0000ff, #4b0082, #9400d3);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: rainbowText 2s linear infinite;
-        }
-    </style>
+/* ── CONFETTI ── */
+.cf{position:fixed;pointer-events:none;z-index:0;animation:cffall linear infinite;border-radius:2px}
+@keyframes cffall{0%{transform:translateY(-8vh) rotate(0deg);opacity:.9}90%{opacity:.4}100%{transform:translateY(108vh) rotate(540deg);opacity:0}}
+</style>
 </head>
+<body class="loading">
 
-<body>
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-logo">SAPTRANG</div>
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-word">SAPTRANG</div>
+  <div class="ld-track"><div class="ld-prog"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <ul class="nav-links-left">
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+  </ul>
+  <a class="nav-center" href="#">SAPTRANG</a>
+  <ul class="nav-links-right">
+    <li><a href="#events">Events</a></li>
+    <li><a href="#footer">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><b>&#11044;</b> &nbsp;february 25 – 28, 2026 &nbsp;·&nbsp; SNJB KBJ College of Engineering Chandwad</div>
+
+  <h1 class="hero-title">
+    <span>S</span><span>A</span><span>P</span><span>T</span><span>R</span><span>A</span><span>N</span><span>G</span>
+  </h1>
+
+  <p class="hero-sub">
+    Seven Colors. <strong>Infinite Vibes.</strong> One Epic Fest.<br/>
+    Four days of culture, art, competition &amp; celebration.
+  </p>
+
+  <div class="hero-date-pill">
+    &#128197;&nbsp; Feb 25 – 28, 2026 &nbsp;&middot;&nbsp; SNJB KBJ College of Engineering Chandwad
+  </div>
+
+  <a class="hero-cta" href="#events">
+    Explore Events
+    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+
+</section>
+
+<!-- POSTER -->
+<section class="sec alt" id="about">
+  <span class="lbl">About Saptrang</span>
+  <h2 class="sec-h">The Festival Awaits</h2>
+  <p class="sec-p">Four days of art, culture, competition and pure celebration at SNJB KBJ College of Engineering.</p>
+  <div class="poster-shell rv">
+    <img src="Saptrang.jpg" alt="Saptrang 2025 Official Poster"/>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SCHEDULE -->
+<section class="sec" id="schedule">
+  <span class="lbl">Full Timetable</span>
+  <h2 class="sec-h">Event Schedule</h2>
+  <p class="sec-p">All four days, all events, all timings — right here.</p>
+  <div class="sched-shell rv">
+    <img src="schedule.jpeg" alt="Complete Event Schedule"/>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- EVENTS -->
+<section class="sec alt" id="events">
+  <span class="lbl">Featured Events</span>
+  <h2 class="sec-h">What's On</h2>
+  <p class="sec-p">Five incredible events. Zero boring moments. Pick your stage and own it.</p>
+
+  <div class="cards-grid">
+
+    <!-- ① Cultural -->
+    <div class="card ev1 rv">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="chip">&#127917;</div>
+        <span class="ctag">Main Event</span>
+        <h3 class="card-title">Cultural Extravaganza</h3>
+        <p class="card-desc">Own the stage! Dance, sing, act, or perform — showcase your talent, meet amazing people, and create memories that last forever. This is YOUR moment. &#10024;</p>
+        <ul class="clist">
+          <li>&#127775; Show off your talent</li>
+          <li>&#127942; Win exciting prizes</li>
+          <li>&#127881; Meet awesome people</li>
+          <li>&#128171; Unforgettable memories</li>
+        </ul>
+        <a class="cbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSf4PaFtBKVUD3yhpn2i-98jTMUbyvWnb-kiZz6zLEuTBStSNg/viewform?usp=sharing" target="_blank" rel="noopener">
+          Register Now
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Rainbow Background -->
-    <div class="rainbow-bg"></div>
+    <!-- ② Anchor -->
+    <div class="card ev2 rv d1">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="chip">&#127908;</div>
+        <span class="ctag">&#128293; Open Audition</span>
+        <h3 class="card-title">Be Our Anchor!</h3>
+        <p class="card-desc">Got the energy to hype up a crowd? We need a super-confident host for Saptrang 2025. If you've got the vibe, step up! &#128293;</p>
+        <ul class="clist">
+          <li>&#9889; High energy &amp; confident</li>
+          <li>&#128172; Crowd engagement</li>
+          <li>&#128526; Natural stage presence</li>
+          <li>&#127914; Keep the vibe alive</li>
+        </ul>
+        <a class="cbtn" href="https://docs.google.com/forms/d/1gpZfxEfWmfK9oCwephdtSHSOPRINSOJYikSZ3R2NyEo/viewform?edit_requested=true" target="_blank" rel="noopener">
+          Audition Now
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <!-- <img src="poster.jpg" alt="Saptrang Festival" class="hero-bg"> -->
-        <div class="hero-content">
-            <h1 class="logo-title">SAPTRANG</h1>
-            <p class="tagline">Seven Colors. Infinite Vibes. One Epic Fest.</p>
-            <div class="date-banner">📅 March 4-7, 2025 | SNJB KBJ College</div>
+    <!-- ③ Art -->
+    <div class="card ev3 rv d2">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="chip">&#127912;</div>
+        <span class="ctag">&#128197; March 4, 2025</span>
+        <h3 class="card-title">Art Exhibition</h3>
+        <p class="card-desc">7 competitions for every kind of artist — painters, photographers, crafters, digital creators. Show the world what you can do! &#128395;</p>
+        <ul class="clist">
+          <li>&#128202; Poster Making</li>
+          <li>&#9999; Sketching</li>
+          <li>&#128187; Digital Art</li>
+          <li>&#127802; Rangoli</li>
+          <li>&#9995; Mehndi Art</li>
+          <li>&#9851; Best Out of Waste</li>
+          <li>&#128247; Photography</li>
+        </ul>
+        <a class="cbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSe_uCArcSDnQNkaYvCHu0uc-aG9QqAcqHmfsuEuvzEpu8QTzA/viewform?usp=sf_link" target="_blank" rel="noopener">
+          Sign Up
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ④ Theme Days -->
+    <div class="card ev4 rv d3">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="chip">&#128247;</div>
+        <h3 class="card-title">Theme Days</h3>
+        <p class="card-desc">Dress up and slay! Five themed days across the fest — grab your squad and make every day Instagram-worthy. &#128247;&#10024;</p>
+        <ul class="clist">
+          <li>&#129812; Traditional Day &mdash; Mar 5, 1 PM</li>
+          <li>&#129323; Mis-Matched Day &mdash; Mar 5, 3 PM</li>
+          <li>&#128131; Bollywood Day &mdash; Mar 6, 9:30 AM</li>
+          <li>&#128101; Group Day &mdash; Mar 6, 12:30 PM</li>
+          <li>&#128248; Saree-Tie Day &mdash; Mar 7, 9:30 AM</li>
+        </ul>
+        <a class="cbtn" href="https://forms.gle/hFGuENnU8qajsUKA7" target="_blank" rel="noopener">
+          Join The Fun
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ⑤ Fishpond — spans full row, horizontal layout -->
+    <div class="card ev5 card-wide rv d4">
+      <div class="card-bar"></div>
+      <div class="card-body">
+        <div class="card-left">
+          <div class="chip" style="font-size:1.8rem;width:56px;height:56px">&#127925;</div>
+          <span class="ctag">&#128157; Only &#8377;10</span>
+          <h3 class="card-title">Musical Fishpond</h3>
+          <p class="card-desc">Surprise your bestie with a secret musical message! For just &#8377;10, anonymously send a song that'll make their entire day. Spread good vibes — the fun way. &#127926;&#128149;</p>
+          <a class="cbtn" href="https://forms.gle/MbHG7MSkFFoqj5aj6" target="_blank" rel="noopener">
+            Send Love &#128153;
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
-        <div class="scroll-indicator"></div>
-    </section>
-
-    <!-- Poster Section -->
-    <section id="about">
-        <h2 class="section-title">The Festival Awaits</h2>
-        <div class="poster-container">
-            <img src="Saptrang.jpg" alt="Saptrang 2025 Official Poster">
+        <div class="card-right" style="padding-top:8px">
+          <ul class="clist" style="margin-bottom:16px">
+            <li>&#127900; Musical fishpond &mdash; only &#8377;10</li>
+            <li>&#127873; 100% anonymous messages</li>
+            <li>&#128157; Make your friends smile</li>
+            <li>&#9993; Text fishponds offline</li>
+          </ul>
+          <div class="calert">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+            Text fishponds are accepted offline inside the college campus only.
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Schedule Section -->
-    <section id="schedule">
-        <h2 class="section-title">Event Schedule</h2>
-        <div class="schedule-box">
-            <img src="schedule.jpeg" alt="Complete Event Schedule">
-        </div>
-    </section>
+  </div>
+</section>
 
-    <!-- Events Section -->
-    <section id="events">
-        <h2 class="section-title">Featured Events</h2>
-        
-        <div class="events-grid">
-            <!-- Cultural Event -->
-            <div class="event-card">
-                <div class="event-icon">🎭</div>
-                <h3 class="event-title">Cultural Extravaganza</h3>
-                <p class="event-desc">
-                    It's time to own the stage! Showcase your talent, connect with amazing people, 
-                    and create memories that'll last forever. Dance, sing, act, or perform – this is YOUR moment to shine! ✨
-                </p>
-                <p><strong>Why join?</strong></p>
-                <ul class="event-list">
-                    <li>🌟 Show off your talent</li>
-                    <li>🎉 Meet awesome people</li>
-                    <li>🏆 Win cool prizes</li>
-                    <li>💫 Make unforgettable memories</li>
-                </ul>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4PaFtBKVUD3yhpn2i-98jTMUbyvWnb-kiZz6zLEuTBStSNg/viewform?usp=sharing" 
-                   class="register-btn" target="_blank">
-                    <span>Register Now →</span>
-                </a>
-            </div>
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="f-brand">SAPTRANG</div>
+  <p><strong>SNJB KBJ College of Engineering</strong></p>
+  <p>Presents Saptrang 2025 — March 4–7</p>
+  <div class="f-stripe"></div>
+  <p class="f-tagline">Seven Colors. One Unforgettable Experience. &#127752;</p>
+  <div class="socials">
+    <a class="soc" href="#" aria-label="Facebook">f</a>
+    <a class="soc" href="#" aria-label="Instagram">&#128247;</a>
+    <a class="soc" href="#" aria-label="Twitter">&#120143;</a>
+    <a class="soc" href="#" aria-label="YouTube">&#9654;</a>
+  </div>
+  <div class="f-copy">&copy; 2025 Saptrang &middot; SNJB KBJ College of Engineering &middot; All rights reserved.</div>
+</footer>
 
-            <!-- Anchors Audition -->
-            <div class="event-card">
-                <div class="event-icon">🎤</div>
-                <h3 class="event-title">Be Our Anchor!</h3>
-                <p class="event-desc">
-                    Got the energy? Got the vibe? We're looking for someone super confident and energetic 
-                    to host Saptrang 2025! If you can hype up a crowd and keep the party going, this is YOUR calling! 🔥
-                </p>
-                <p><strong>We need someone who's:</strong></p>
-                <ul class="event-list">
-                    <li>⚡ High energy & pumped up</li>
-                    <li>💬 Great at talking to crowds</li>
-                    <li>😎 Confident on stage</li>
-                    <li>🎪 Can keep the vibe alive</li>
-                </ul>
-                <a href="https://docs.google.com/forms/d/1gpZfxEfWmfK9oCwephdtSHSOPRINSOJYikSZ3R2NyEo/viewform?edit_requested=true" 
-                   class="register-btn" target="_blank">
-                    <span>Audition Now →</span>
-                </a>
-            </div>
+<script>
+// Loader
+window.scrollTo(0,0);
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('loader').classList.add('gone');
+    document.body.classList.remove('loading');
+    window.scrollTo(0,0);
+  }, 1500);
+});
 
-            <!-- Art Exhibition -->
-            <div class="event-card">
-                <div class="event-icon">🎨</div>
-                <h3 class="event-title">Art Exhibition</h3>
-                <span class="event-date">📅 March 4, 2025</span>
-                <p class="event-desc">
-                    Calling all artists! Whether you paint, sketch, click photos, or craft – we want YOU! 
-                    Show the world what you've got across 7 different competitions. Let's make some art magic! 🖌️
-                </p>
-                <p><strong>Competitions:</strong></p>
-                <ul class="event-list">
-                    <li>📊 Poster Making</li>
-                    <li>✏️ Sketching</li>
-                    <li>💻 Digital Art</li>
-                    <li>🌺 Rangoli</li>
-                    <li>✋ Mehndi Art</li>
-                    <li>♻️ Best Out of Waste</li>
-                    <li>📸 Photography</li>
-                </ul>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_uCArcSDnQNkaYvCHu0uc-aG9QqAcqHmfsuEuvzEpu8QTzA/viewform?usp=sf_link" 
-                   class="register-btn" target="_blank">
-                    <span>Sign Up →</span>
-                </a>
-            </div>
+// Sticky nav
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('stuck', window.scrollY > 60);
+});
 
-            <!-- Theme Days -->
-            <div class="event-card">
-                <div class="event-icon">👗</div>
-                <h3 class="event-title">Theme Days</h3>
-                <p class="event-desc">
-                    Get ready to dress up and slay! We've got 5 crazy theme days lined up. 
-                    Pick your favorite outfit, grab your squad, and let's make every day Instagram-worthy! 📸✨
-                </p>
-                <p><strong>The Lineup:</strong></p>
-                <ul class="event-list">
-                    <li>🪔 Traditional Day - Mar 5, 1 PM</li>
-                    <li>🤪 Mis-Matched Day - Mar 5, 3 PM</li>
-                    <li>💃 Bollywood Day - Mar 6, 9:30 AM</li>
-                    <li>👥 Group Day - Mar 6, 12:30 PM</li>
-                    <li>👘 Saree-Tie Day - Mar 7, 9:30 AM</li>
-                </ul>
-                <a href="https://forms.gle/hFGuENnU8qajsUKA7" 
-                   class="register-btn" target="_blank">
-                    <span>Join The Fun →</span>
-                </a>
-            </div>
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rv').forEach(function(el) { obs.observe(el); });
 
-            <!-- Fishpond -->
-            <div class="event-card">
-                <div class="event-icon">🎵</div>
-                <h3 class="event-title">Musical Fishpond</h3>
-                <p class="event-desc">
-                    Surprise your besties with a secret musical message! For just ₹10, send them a song that'll 
-                    make their day. It's anonymous, it's fun, and it's the perfect way to spread good vibes! 🎶💕
-                </p>
-                <p><strong>How it works:</strong></p>
-                <ul class="event-list">
-                    <li>🎼 Musical fishpond - ₹10 only</li>
-                    <li>🎁 Anonymous surprise messages</li>
-                    <li>💝 Make your friends smile</li>
-                    <li>✉️ Text fishponds offline</li>
-                </ul>
-                <div class="info-box">
-                    ⚠️ Note: Text fishponds accepted offline in college campus
-                </div>
-                <a href="https://forms.gle/MbHG7MSkFFoqj5aj6" 
-                   class="register-btn" target="_blank">
-                    <span>Send Love →</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <h3>SNJB KBJ College of Engineering</h3>
-        <p>Presents SAPTRANG 2025</p>
-        <p style="color: rgba(255,255,255,0.8); font-weight: 600;">Seven Colors. One Unforgettable Experience. 🌈</p>
-        <div class="social-links">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="Twitter">🐦</a>
-            <a href="#" aria-label="YouTube">▶</a>
-        </div>
-        <p style="margin-top: 30px; font-size: 0.9rem;">© 2025 Saptrang. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Hide loader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1500);
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Create confetti
-        function createConfetti() {
-            const colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
-            for (let i = 0; i < 30; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 8 + 's';
-                confetti.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                document.body.appendChild(confetti);
-            }
-        }
-
-        createConfetti();
-
-        // Parallax effect on hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-bg');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-    </script>
+// Confetti — subtle, few pieces
+var CC = ['#f43f5e','#f97316','#eab308','#22c55e','#3b82f6'];
+for (var i = 0; i < 18; i++) {
+  var d = document.createElement('div');
+  d.className = 'cf';
+  var c = Math.random() < 0.4;
+  d.style.left = (Math.random() * 100) + '%';
+  d.style.background = CC[Math.floor(Math.random() * CC.length)];
+  d.style.width = '6px';
+  d.style.height = c ? '6px' : '12px';
+  d.style.borderRadius = c ? '50%' : '3px';
+  d.style.animationDuration = (9 + Math.random() * 8) + 's';
+  d.style.animationDelay = (Math.random() * 14) + 's';
+  d.style.opacity = (0.3 + Math.random() * 0.4).toString();
+  document.body.appendChild(d);
+}
+</script>
 </body>
-
 </html>
