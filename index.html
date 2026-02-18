@@ -173,27 +173,11 @@ nav.stuck{background:rgba(255,255,255,.95);backdrop-filter:blur(16px);box-shadow
 .sec-p{text-align:center;color:var(--ink-2);font-size:.97rem;max-width:480px;margin:0 auto 52px;line-height:1.7}
 .rule{max-width:1200px;margin:0 auto;height:1px;background:var(--line)}
 
-/* ── STATS ── */
-.stats-row{
-  display:flex;flex-wrap:wrap;
-  max-width:800px;margin:0 auto 80px;
-  border:1.5px solid var(--line);border-radius:16px;
-  background:var(--white);overflow:hidden;
-}
-.stat{flex:1;min-width:120px;text-align:center;padding:26px 16px;border-right:1.5px solid var(--line)}
-.stat:last-child{border-right:none}
-.stat-n{font-family:'Bebas Neue',cursive;font-size:2.8rem;line-height:1;color:var(--ink)}
-.stat-l{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);margin-top:4px}
-.stat:nth-child(1) .stat-n{color:var(--c1)}
-.stat:nth-child(2) .stat-n{color:var(--c2)}
-.stat:nth-child(3) .stat-n{color:var(--c4)}
-.stat:nth-child(4) .stat-n{color:var(--c5)}
-@media(max-width:560px){.stat{border-right:none;border-bottom:1.5px solid var(--line)}.stat:last-child{border-bottom:none}}
 
 /* ── POSTER ── */
 .poster-shell{
-  max-width:800px;margin:0 auto;
-  border-radius:20px;overflow:hidden;
+  max-width:1200px;margin:0 auto;
+  border-radius: 10px;overflow:hidden;
   border:1.5px solid var(--line);
   box-shadow:0 20px 60px rgba(0,0,0,.1);
   transition:transform .35s,box-shadow .35s;
